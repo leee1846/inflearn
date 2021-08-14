@@ -1,5 +1,6 @@
 main {
   width: 100vw;
+
   #main-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -60,7 +61,7 @@ main {
         }
       }
       #search-list-section {
-        // position: fixed;
+        display: none;
         position: absolute;
         left: 50%;
         top: 54px;
@@ -84,11 +85,13 @@ main {
 
           li {
             font-size: 14px;
+
             a {
               display: inline-block;
               width: 100%;
               padding: 8px 20px;
               border-bottom: 1px solid lightgray;
+
               &:hover {
                 background-color: rgb(246, 246, 246);
               }
@@ -99,6 +102,7 @@ main {
     }
     #course-list-section {
       z-index: 1;
+
       #course-list {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(220px, auto));

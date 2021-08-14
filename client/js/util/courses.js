@@ -25,5 +25,4 @@ export const makeCourseItem = (courses) => {
     nameElement.after(priceElement);
     listBox.appendChild(liElement);
   });
-  console.log(courses);
 };

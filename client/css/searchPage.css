@@ -103,6 +103,7 @@ main #main-section #search-form #search-label #search-input:focus::placeholder {
 }
 
 main #main-section #search-form #search-list-section {
+  display: none;
   position: absolute;
   left: 50%;
   top: 54px;
