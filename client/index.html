@@ -4,13 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/searchPage.css" />
+    <title>인프런 과제</title>
   </head>
   <body>
-    <form id="search-form">
-      <input type="text" id="input-search" autocomplete="off" />
-    </form>
-    <ul id="course-list"></ul>
+    <main>
+      <div id="main-section">
+        <h1 id="main-title">성장기회의 평등을 추구합니다</h1>
+        <form id="search-form">
+          <label for="search-input" id="search-label">
+            <input
+              type="text"
+              id="search-input"
+              autocomplete="off"
+              placeholder="배우고 싶은 지식을 입력해보세요."
+            />
+          </label>
+          <section id="search-list-section">
+            <ul id="search-list"></ul>
+          </section>
+        </form>
+        <section id="course-list-section">
+          <ul id="course-list"></ul>
+        </section>
+      </div>
+    </main>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module" src="./js/app.js"></script>

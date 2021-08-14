@@ -1,7 +1,9 @@
-import { getSearchResult } from "./core/core.js";
+import { searchCourses, showAllCourses } from "./core/core.js";
 
 const initApp = () => {
-  getSearchResult();
+  searchCourses();
+
+  showAllCourses();
 };
 
 initApp();

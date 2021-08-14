@@ -4,7 +4,7 @@ export const fetchCourseTitle = async (searchValue) => {
     url: "http://localhost:3000/api/search/courses",
     params: {
       keyword: searchValue,
-      max: 10,
+      max: 20,
     },
   });
   return response.data;
@@ -16,5 +16,5 @@ export const fetchCourses = async () => {
     url: "http://localhost:3000/api/courses",
   });
 
-  return response.data.data;
+  return response.data;
 };

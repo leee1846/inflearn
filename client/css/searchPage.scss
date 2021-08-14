@@ -1,0 +1,130 @@
+#main-section {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  #main-title {
+    text-align: center;
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+
+  #search-form {
+    position: relative;
+    margin-bottom: 130px;
+
+    #search-label {
+      display: block;
+      width: 580px;
+      height: 54px;
+      border-radius: 50px;
+      border: 1px solid rgba(29, 192, 120, 0.24);
+      background-color: rgba(29, 192, 120, 0.12);
+      margin: 0 auto;
+      padding: 14px 20px;
+      transition: 0.3s;
+      box-shadow: 0 2px 4px 0 rgba(42, 42, 42, 0.12);
+
+      #search-input {
+        width: 100%;
+        font-size: 16px;
+        color: #5f5f7f;
+
+        &::placeholder {
+          font-size: 16px;
+          color: #9fcabc;
+        }
+        &:focus::placeholder {
+          color: lightgray;
+        }
+      }
+    }
+    #search-list-section {
+      position: absolute;
+      left: 50%;
+      top: 54px;
+      transform: translateX(-50%);
+      height: 200px;
+      overflow-y: auto;
+      z-index: 10;
+
+      #search-list {
+        width: 580px;
+        margin: 0 auto;
+        background-color: white;
+
+        li {
+          font-size: 14px;
+          a {
+            display: inline-block;
+            width: 100%;
+            padding: 8px 20px;
+            border-bottom: 1px solid lightgray;
+            &:hover {
+              background-color: rgb(246, 246, 246);
+            }
+          }
+        }
+      }
+    }
+  }
+  #course-list-section {
+    z-index: 1;
+    #course-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, auto));
+      justify-content: space-between;
+
+      li {
+        max-width: 220px;
+        height: 330px;
+        margin-bottom: 10px;
+
+        a {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          position: relative;
+
+          &:hover:after {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.514);
+          }
+
+          img {
+            width: 100%;
+            margin-bottom: 10px;
+          }
+          .course-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #454545;
+            margin-bottom: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .course-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #7d7d7d;
+            margin-bottom: 5px;
+          }
+          .course-price {
+            font-size: 17px;
+            font-weight: bold;
+            color: #1e61c0;
+          }
+        }
+      }
+    }
+  }
+}

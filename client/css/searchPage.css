@@ -1,0 +1,174 @@
+#main-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#main-section #main-title {
+  text-align: center;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 48px;
+}
+
+#main-section #search-form {
+  position: relative;
+  margin-bottom: 130px;
+}
+
+#main-section #search-form #search-label {
+  display: block;
+  width: 580px;
+  height: 54px;
+  border-radius: 50px;
+  border: 1px solid rgba(29, 192, 120, 0.24);
+  background-color: rgba(29, 192, 120, 0.12);
+  margin: 0 auto;
+  padding: 14px 20px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(42, 42, 42, 0.12);
+          box-shadow: 0 2px 4px 0 rgba(42, 42, 42, 0.12);
+}
+
+#main-section #search-form #search-label #search-input {
+  width: 100%;
+  font-size: 16px;
+  color: #5f5f7f;
+}
+
+#main-section #search-form #search-label #search-input::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #9fcabc;
+}
+
+#main-section #search-form #search-label #search-input:-ms-input-placeholder {
+  font-size: 16px;
+  color: #9fcabc;
+}
+
+#main-section #search-form #search-label #search-input::-ms-input-placeholder {
+  font-size: 16px;
+  color: #9fcabc;
+}
+
+#main-section #search-form #search-label #search-input::placeholder {
+  font-size: 16px;
+  color: #9fcabc;
+}
+
+#main-section #search-form #search-label #search-input:focus::-webkit-input-placeholder {
+  color: lightgray;
+}
+
+#main-section #search-form #search-label #search-input:focus:-ms-input-placeholder {
+  color: lightgray;
+}
+
+#main-section #search-form #search-label #search-input:focus::-ms-input-placeholder {
+  color: lightgray;
+}
+
+#main-section #search-form #search-label #search-input:focus::placeholder {
+  color: lightgray;
+}
+
+#main-section #search-form #search-list-section {
+  position: absolute;
+  left: 50%;
+  top: 54px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+#main-section #search-form #search-list-section #search-list {
+  width: 580px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+#main-section #search-form #search-list-section #search-list li {
+  font-size: 14px;
+}
+
+#main-section #search-form #search-list-section #search-list li a {
+  display: inline-block;
+  width: 100%;
+  padding: 8px 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+#main-section #search-form #search-list-section #search-list li a:hover {
+  background-color: #f6f6f6;
+}
+
+#main-section #course-list-section {
+  z-index: 1;
+}
+
+#main-section #course-list-section #course-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(220px, auto))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(220px, auto));
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#main-section #course-list-section #course-list li {
+  max-width: 220px;
+  height: 330px;
+  margin-bottom: 10px;
+}
+
+#main-section #course-list-section #course-list li a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#main-section #course-list-section #course-list li a:hover:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.514);
+}
+
+#main-section #course-list-section #course-list li a img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#main-section #course-list-section #course-list li a .course-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #454545;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#main-section #course-list-section #course-list li a .course-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #7d7d7d;
+  margin-bottom: 5px;
+}
+
+#main-section #course-list-section #course-list li a .course-price {
+  font-size: 17px;
+  font-weight: bold;
+  color: #1e61c0;
+}
+/*# sourceMappingURL=searchPage.css.map */
