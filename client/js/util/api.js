@@ -1,10 +1,10 @@
-export const fetchCourseTitle = async (searchValue) => {
+export const fetchCourseTitle = async (searchValue, page) => {
   const response = await axios({
     method: "get",
     url: "http://localhost:3000/api/search/courses",
     params: {
       keyword: searchValue,
-      max: 10,
+      max: 10 * page,
     },
   });
   return response.data;
