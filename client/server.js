@@ -6,8 +6,8 @@ const port = 8080;
 app.use(express.static(path.resolve(__dirname, "src")));
 
 app.get("/:id", (req, res) => {
-  console.log(req.params.id);
-  res.sendFile(path.resolve(__dirname, "src/html", "coursePage.html"));
+  if (req.params.id)
+    res.sendFile(path.resolve(__dirname, "src/html", "coursePage.html"));
 });
 
 app.listen(port, () => {
