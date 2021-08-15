@@ -204,3 +204,35 @@ fail
 </table>
 
 ## 구현 설명
+### 1. html 파일
+- html 파일은 2개로 페이지별로 파일을 생성하였습니다. 
+- index.html은 처음 보여질 메인페이지이며, html폴더안에 있는 coursePage.html은 course클릭시 넘어갈 course상세페이지입니다.
+
+### 2. css 파일
+- scss를 사용하여 스타일을 적용하였습니다.
+- css파일은 3개로 reset.css와 페이지별로 나눈 searchPage.css, coursePage.css가 있습니다.
+- 2개의 페이지 모두 반응형을 적용하였습니다.
+
+### 3. javascript 파일
+- 첫 페이지는 app.js를 통해 javascript가 적용되며, course상세페이지는 page폴더의 coursePage.js가 적용됩니다.
+- 폴더는 page와 util로 나누었으며, util폴더안에는 기능별로 파일을 나누었습니다.
+
+### 4. 기능 설명
+#### 4-1. 검색
+- input 검색시 value가 2자이상일때 server와 통신합니다.
+- debounce 0.3초를 적용하였습니다.
+- 리스트는 10개씩 가져오며, 무한스크롤을 적용하였습니다.
+- focus,blur 이벤트가 적용될때 스타일이 변경됩니다.
+
+#### 4-2. course 클릭
+- 검색된 리스트와 강의 리스트는 모두 a태그이며, href주소를 course의 id로 적용하였습니다.
+- course를 클릭시 coursePage.html이 렌더링되며, 주소의 params를 가져와서 fetch한후 data를 적용하였습니다.
+
+### 5. 사용 라이브러리
+1. axios
+2. lodash
+3. express
+
+### 6. 참고
+- "yarn dev"를 통해서 실행합니다.
+- http://localhost:8080/
