@@ -1,6 +1,8 @@
+import { fetchCourseList } from "./api.js";
+
 // 메인페이지 course 목록 element에 적용
 export const makeCourseItems = (courses) => {
-  const listBox = document.querySelector("#course-list");
+  const lastElement = document.querySelector("#course-last-item");
 
   courses.forEach((course) => {
     const liElement = document.createElement("li");
@@ -10,7 +12,6 @@ export const makeCourseItems = (courses) => {
     const nameElement = document.createElement("p");
     const priceElement = document.createElement("p");
 
-    liElement.dataset.courseid = course.id;
     aElement.href = `/${course.id}`;
     imgElement.src = course.coverImageUrl;
     titleElement.innerHTML = course.title;
@@ -25,6 +26,60 @@ export const makeCourseItems = (courses) => {
     imgElement.after(titleElement);
     titleElement.after(nameElement);
     nameElement.after(priceElement);
-    listBox.appendChild(liElement);
+    lastElement.before(liElement);
   });
 };
+
+class Observer {
+  constructor() {
+    this.pageNum = 0;
+    this.courseListLength = 20;
+  }
+  observe() {
+    const lastElement = document.querySelector("#course-last-item");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(async (entry) => {
+        if (entry.isIntersecting) {
+          this.pageNum++;
+
+          if (this.courseListLength >= 20) {
+            const allCourses = await fetchCourseList(this.pageNum);
+            const { ok, data } = allCourses;
+            const { courses } = data;
+            this.courseListLength = courses.length;
+            if (ok) {
+              makeCourseItems(courses);
+            }
+          }
+        }
+      });
+    });
+
+    if (lastElement) observer.observe(lastElement);
+  }
+}
+export const CourseObserve = new Observer();
+// export const observeCourse = () => {
+//   const lastElement = document.querySelector("#course-last-item");
+
+//   const observer = new IntersectionObserver((entries) => {
+//     entries.forEach(async (entry) => {
+//       if (entry.isIntersecting) {
+//         pageNum++;
+
+//         if (courseListLength >= 20) {
+//           const allCourses = await fetchCourseList(pageNum);
+//           const { ok, data } = allCourses;
+//           const { courses } = data;
+//           courseListLength = courses.length;
+//           if (ok) {
+//             makeCourseItems(courses);
+//           }
+//         }
+//       }
+//     });
+//   });
+
+//   if (lastElement) observer.observe(lastElement);
+// };
