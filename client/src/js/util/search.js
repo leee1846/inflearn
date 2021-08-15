@@ -92,8 +92,13 @@ export const hideResultOnBlur = (searchInput) => {
       "rgba(29, 192, 120, 0.24)",
       "0 2px 4px 0 rgba(42, 42, 42, 0.12)"
     );
+
     // 검색리스트 숨기기
-    if (e.relatedTarget.className !== "search-click") hideSearchSection();
+    if (e?.relatedTarget?.className !== "search-click") {
+      hideSearchSection();
+    } else if (!e.relatedTarget) {
+      hideSearchSection();
+    }
   });
 };
 

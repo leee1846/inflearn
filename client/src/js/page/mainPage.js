@@ -21,6 +21,7 @@ export const searchCourses = () => {
   activeSearchInputEvents(searchInputElement);
 };
 
+// 메인페이지 강의 리스트 보이기
 export const showAllCourses = async () => {
   const allCourses = await fetchCourseList();
   const { ok, data } = allCourses;
