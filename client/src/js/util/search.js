@@ -81,7 +81,7 @@ export const searchListObserver = (inputValue, pageNum) => {
       }
     });
   });
-  observer.observe(lastElement);
+  if (lastElement) observer.observe(lastElement);
 };
 
 // input blur시에 이벤트
