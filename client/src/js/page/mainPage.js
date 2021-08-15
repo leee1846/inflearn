@@ -1,16 +1,16 @@
 import {
   searchCoursesOnChange,
   getResultOnFocus,
-  deleteResultOnBlur,
+  hideResultOnBlur,
   eventPreventDefault,
 } from "../util/search.js";
-import { fetchCourses } from "../util/api.js";
-import { makeCourseItem } from "../util/courses.js";
+import { fetchCourseList } from "../util/api.js";
+import { makeCourseItems } from "../util/courses.js";
 
 const activeSearchInputEvents = (searchInput) => {
   searchCoursesOnChange(searchInput);
   getResultOnFocus(searchInput);
-  deleteResultOnBlur(searchInput);
+  hideResultOnBlur(searchInput);
 };
 
 export const searchCourses = () => {
@@ -22,10 +22,10 @@ export const searchCourses = () => {
 };
 
 export const showAllCourses = async () => {
-  const allCourses = await fetchCourses();
+  const allCourses = await fetchCourseList();
   const { ok, data } = allCourses;
   const { courses } = data;
   if (ok) {
-    makeCourseItem(courses);
+    makeCourseItems(courses);
   }
 };

@@ -1,9 +1,9 @@
-import { searchCourses, showAllCourses } from "./core/core.js";
+import { searchCourses, showAllCourses } from "./page/mainPage.js";
 
-const initApp = () => {
+const initMainPage = () => {
   searchCourses();
 
   showAllCourses();
 };
 
-initApp();
+initMainPage();

@@ -1,4 +1,5 @@
-export const makeCourseItem = (courses) => {
+// 메인페이지 course 목록 element에 적용
+export const makeCourseItems = (courses) => {
   const listBox = document.querySelector("#course-list");
 
   courses.forEach((course) => {
