@@ -11,6 +11,7 @@ export const makeCourseItems = (courses) => {
     const priceElement = document.createElement("p");
 
     liElement.dataset.courseid = course.id;
+    aElement.href = `/${course.id}`;
     imgElement.src = course.coverImageUrl;
     titleElement.innerHTML = course.title;
     titleElement.classList.add("course-title");
