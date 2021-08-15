@@ -2,6 +2,7 @@ import { fetchCourseTitle } from "./api.js";
 
 const searchListSection = document.querySelector("#search-list-section");
 const searchListUl = document.getElementById("search-list");
+let lastPage = 10;
 
 // 검색 리스트 모두 삭제
 const removeSearchItems = () => {
@@ -13,41 +14,10 @@ const hideSearchSection = () => {
   searchListSection.style.display = "none";
 };
 
-// 마지막 검색리스트 무한 스크롤
-export const searchListObserver = (inputValue, page) => {
-  const lastElement = document.querySelector("#search-last-item");
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(async (entry) => {
-      if (entry.isIntersecting) {
-        page += 1;
-        console.log(page);
-        showCourseList(inputValue, page);
-        observer.disconnect();
-      }
-    });
-  });
-  if (lastElement) observer.observe(lastElement);
-};
-
-// 인풋 스타일 수정
-const changeLabelStyle = (bgColor, borderColor, shadow) => {
-  const label = document.querySelector("#search-label");
-  label.style.backgroundColor = bgColor;
-  label.style.borderColor = borderColor;
-  label.style.boxShadow = shadow;
-};
-
-// form 태그 새로고침막기
-export const eventPreventDefault = (formElement) => {
-  formElement.addEventListener("submit", (e) => {
-    e.preventDefault();
-  });
-};
-
 // 조회된 검색리스트 생성
-const showCourseList = async (inputValue, page) => {
+const showCourseList = async (inputValue, pageNum) => {
   // 검색값 서버 통신
-  const searchResults = await fetchCourseTitle(inputValue, page);
+  const searchResults = await fetchCourseTitle(inputValue, pageNum);
   const { ok, data } = searchResults;
   const { results } = data;
 
@@ -72,8 +42,43 @@ const showCourseList = async (inputValue, page) => {
     });
 
     // 무한스크롤 적용
-    searchListObserver(inputValue, 1);
+    searchListObserver(inputValue, pageNum);
   }
+  return results;
+};
+
+// 마지막 검색리스트 무한 스크롤
+export const searchListObserver = (inputValue, pageNum) => {
+  const lastElement = document.querySelector("#search-last-item");
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(async (entry) => {
+      if (entry.isIntersecting) {
+        pageNum++;
+        if (pageNum * 10 === lastPage + 10) {
+          const newSearchList = await showCourseList(inputValue, pageNum);
+          lastPage = newSearchList.length;
+          observer.disconnect();
+        }
+      }
+    });
+  });
+  observer.observe(lastElement);
+};
+
+// 인풋 스타일 수정
+const changeLabelStyle = (bgColor, borderColor, shadow) => {
+  const label = document.querySelector("#search-label");
+  label.style.backgroundColor = bgColor;
+  label.style.borderColor = borderColor;
+  label.style.boxShadow = shadow;
+};
+
+// form 태그 새로고침막기
+export const eventPreventDefault = (formElement) => {
+  formElement.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
 };
 
 // input blur시에 이벤트
@@ -107,6 +112,7 @@ export const getResultOnFocus = (searchInput) => {
 // input 검색시 이벤트
 export const searchCoursesOnChange = (searchInput) => {
   let inputValue = "";
+  let pageNum = 1;
 
   searchInput.addEventListener(
     "input",
@@ -115,7 +121,10 @@ export const searchCoursesOnChange = (searchInput) => {
 
       if (inputValue.length > 1) {
         // 검색리스트 fetch후 보여주기
-        showCourseList(inputValue, 1);
+        showCourseList(inputValue, pageNum);
+      } else {
+        removeSearchItems();
+        lastPage = 10;
       }
     }, 300)
   );
