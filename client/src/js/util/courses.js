@@ -30,6 +30,7 @@ export const makeCourseItems = (courses) => {
   });
 };
 
+// 무한스크롤
 class Observer {
   constructor() {
     this.pageNum = 0;
@@ -43,6 +44,7 @@ class Observer {
         if (entry.isIntersecting) {
           this.pageNum++;
 
+          // 마지막 리스트일때 멈추기
           if (this.courseListLength >= 20) {
             const allCourses = await fetchCourseList(this.pageNum);
             const { ok, data } = allCourses;
@@ -60,26 +62,3 @@ class Observer {
   }
 }
 export const CourseObserve = new Observer();
-// export const observeCourse = () => {
-//   const lastElement = document.querySelector("#course-last-item");
-
-//   const observer = new IntersectionObserver((entries) => {
-//     entries.forEach(async (entry) => {
-//       if (entry.isIntersecting) {
-//         pageNum++;
-
-//         if (courseListLength >= 20) {
-//           const allCourses = await fetchCourseList(pageNum);
-//           const { ok, data } = allCourses;
-//           const { courses } = data;
-//           courseListLength = courses.length;
-//           if (ok) {
-//             makeCourseItems(courses);
-//           }
-//         }
-//       }
-//     });
-//   });
-
-//   if (lastElement) observer.observe(lastElement);
-// };

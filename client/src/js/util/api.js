@@ -10,14 +10,14 @@ export const fetchCourseItem = async (id) => {
   }
 };
 
-export const fetchCourseTitle = async (searchValue, page) => {
+export const fetchCourseTitle = async (searchValue) => {
   try {
     const response = await axios({
       method: "get",
       url: "http://localhost:3000/api/search/courses",
       params: {
         keyword: searchValue,
-        max: 10 * page,
+        max: 20,
       },
     });
     return response.data;

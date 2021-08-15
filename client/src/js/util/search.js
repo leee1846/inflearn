@@ -2,7 +2,6 @@ import { fetchCourseTitle } from "./api.js";
 
 const searchListSection = document.querySelector("#search-list-section");
 const searchListUl = document.getElementById("search-list");
-let searchListLength = 10;
 
 // 검색 리스트 모두 삭제
 const removeSearchItems = () => {
@@ -30,9 +29,9 @@ export const eventPreventDefault = (formElement) => {
 };
 
 // 조회된 검색리스트 엘리먼트 생성
-const showCourseList = async (inputValue, pageNum) => {
+const showCourseList = async (inputValue) => {
   // 검색값 서버 통신
-  const searchResults = await fetchCourseTitle(inputValue, pageNum);
+  const searchResults = await fetchCourseTitle(inputValue);
   const { ok, data } = searchResults;
   const { results: searchRsults } = data;
 
@@ -41,47 +40,19 @@ const showCourseList = async (inputValue, pageNum) => {
 
   if (ok) {
     searchListSection.style.display = "initial";
-    searchRsults.forEach((item, index) => {
+    searchRsults.forEach((item) => {
       const liElement = document.createElement("li");
       const aElement = document.createElement("a");
       liElement.classList.add("search-item");
       aElement.classList.add("search-click");
-
-      // 리스트의 마지막 엘리먼트에 특정 아이디 적용
-      if (index + 1 === searchRsults.length) {
-        liElement.id = "search-last-item";
-      }
       aElement.innerHTML = item.title;
       aElement.href = `/${item.id}`;
 
       liElement.appendChild(aElement);
       searchListUl.appendChild(liElement);
     });
-
-    // 무한스크롤 적용
-    searchListObserver(inputValue, pageNum);
   }
   return searchRsults;
-};
-
-// 마지막 검색리스트 무한 스크롤
-export const searchListObserver = (inputValue, pageNum) => {
-  const lastElement = document.querySelector("#search-last-item");
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(async (entry) => {
-      if (entry.isIntersecting) {
-        pageNum++;
-        // 마지막 리스트일때 fetch하지 않기위한 조건
-        if (pageNum * 10 === searchListLength + 10) {
-          const newSearchList = await showCourseList(inputValue, pageNum);
-          searchListLength = newSearchList.length;
-          observer.disconnect();
-        }
-      }
-    });
-  });
-  if (lastElement) observer.observe(lastElement);
 };
 
 // input blur시에 이벤트
@@ -120,7 +91,6 @@ export const getResultOnFocus = (searchInput) => {
 // input 검색시 이벤트
 export const searchCoursesOnChange = (searchInput) => {
   let inputValue = "";
-  let pageNum = 1;
 
   searchInput.addEventListener(
     "input",
@@ -129,7 +99,7 @@ export const searchCoursesOnChange = (searchInput) => {
 
       if (inputValue.length > 1) {
         // 검색리스트 fetch후 보여주기
-        showCourseList(inputValue, pageNum);
+        showCourseList(inputValue);
       } else {
         removeSearchItems();
         searchListLength = 10;
