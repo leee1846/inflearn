@@ -224,7 +224,10 @@ fail
 - 리스트는 10개씩 가져오며, 무한스크롤을 적용하였습니다.
 - focus,blur 이벤트가 적용될때 스타일이 변경됩니다.
 
-#### 4-2. course 클릭
+#### 4-2. 강의 리스트
+- 첫 메인페이지에 나오는 강의 리스트는 IntersectionObserver를 사용하여 무한스크롤을 적용하였습니다.
+
+#### 4-3. course 클릭
 - 검색된 리스트와 강의 리스트는 모두 a태그이며, href주소를 course의 id로 적용하였습니다.
 - course를 클릭시 coursePage.html이 렌더링되며, 주소의 params를 가져와서 fetch한후 data를 적용하였습니다.
 
