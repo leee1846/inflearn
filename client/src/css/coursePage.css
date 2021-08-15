@@ -1,0 +1,103 @@
+#course-item-section {
+  width: 100vw;
+  background-color: #002333;
+  padding: 40px 0;
+  color: white;
+  position: relative;
+}
+
+@media screen and (max-width: 1024px) {
+  #course-item-section {
+    height: 455px;
+    padding: 60px 44px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #course-item-section {
+    padding: 40px 24px;
+  }
+}
+
+#course-item-section #course-item-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#course-item-section #course-item-container #course-item-imgbox {
+  width: 440px;
+  height: 286px;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  margin-right: 32px;
+}
+
+@media screen and (max-width: 1024px) {
+  #course-item-section #course-item-container #course-item-imgbox {
+    width: 525px;
+    height: 341px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #course-item-section #course-item-container #course-item-imgbox {
+    top: 40%;
+    width: 90%;
+    min-height: 350px;
+  }
+}
+
+#course-item-section #course-item-container #course-item-imgbox img {
+  width: 100%;
+}
+
+#course-item-section #course-item-container div {
+  font-weight: bold;
+}
+
+#course-item-section #course-item-container div #course-item-title {
+  font-size: 26px;
+  letter-spacing: -0.3px;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  #course-item-section #course-item-container div #course-item-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+#course-item-section #course-item-container div #course-item-name {
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+}
+
+#course-item-section #course-item-container div #course-item-price {
+  font-size: 16px;
+  letter-spacing: -0.3px;
+}
+/*# sourceMappingURL=coursePage.css.map */

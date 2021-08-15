@@ -1,3 +1,11 @@
+export const fetchCourseItem = async (id) => {
+  const response = await axios({
+    method: "get",
+    url: `http://localhost:3000/api/courses/${id}`,
+  });
+  return response.data;
+};
+
 export const fetchCourseTitle = async (searchValue, page) => {
   const response = await axios({
     method: "get",

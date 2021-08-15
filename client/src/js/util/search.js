@@ -90,7 +90,7 @@ export const deleteResultOnBlur = (searchInput) => {
       "0 2px 4px 0 rgba(42, 42, 42, 0.12)"
     );
     // 검색리스트 숨기기
-    hideSearchSection();
+    // hideSearchSection();
   });
 };
 

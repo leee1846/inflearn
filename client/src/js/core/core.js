@@ -29,8 +29,3 @@ export const showAllCourses = async () => {
     makeCourseItem(courses);
   }
 };
-
-export const routeToCourse = () => {
-  const pathName = window.location;
-  console.log(pathName);
-};
